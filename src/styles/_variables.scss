@@ -1,0 +1,21 @@
+// media query.
+$query-mobile: 375px;
+$query-desktop: 1440px;
+
+// colors.
+//  Primary
+$Pink: hsl(322, 100%, 66%);
+
+//  Neutral
+$Very-Dark-Cyan: hsl(192, 100%, 9%);
+$Very-Pale-Blue: hsl(207, 100%, 98%);
+
+
+// Typography.
+// Headings
+$headeing-family: 'Poppins'; //(https://fonts.google.com/specimen/Poppins);
+$headeing-weights: 700;
+
+// Body
+$body-family: 'Open Sans'; //(https://fonts.google.com/specimen/Open+Sans);
+$body-weights: 400, 600, 700;
