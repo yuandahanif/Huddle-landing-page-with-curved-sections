@@ -1,7 +1,165 @@
-@import "../assets/fonts/Open Sans/stylesheet.css";
-@import "../assets/fonts/Poppins/stylesheet.css";
+@import url("../assets/fonts/Open Sans/stylesheet.css");
+@import url("../assets/fonts/Poppins/stylesheet.css");
 @import "./variables";
+@import "./media";
+
+// simple css reset.
+* {
+	margin: 0;
+	padding: 0;
+}
+
+// * Link
+a {
+	text-decoration: none;
+	color: $very-Dark-Cyan;
+}
+a.fw-700{
+	font-weight: 700;
+	color: white;
+	box-shadow: .1em .2em .4em rgba(0, 0, 0, 0.315);
+}
+
+// * Heading
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $headeing-family;
+	font-weight: $headeing-weights;
+	color: $very-Dark-Cyan;
+}
+h1 {
+	// font-size: $h1;
+}
+
+// * normal text
+p,
+span {
+	font-family: $body-family;
+	font-weight: $body-weights;
+	color: $black;
+}
 
 :root {
 	font-size: 16px;
+	// , -apple-system, BlinkMacSystemFont, "Segoe UI",
+	// 	Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+// * Template
+.row {
+	display: flex;
+
+	// .col {
+
+	// }
+}
+
+body {
+	font-family: "Open Sans";
+}
+
+header {
+	nav {
+		display: flex;
+		justify-content: space-between;
+		// background-color: salmon;
+		padding: 2em 1em;
+
+		@include media(">mobile") {
+			padding: 3.5em 3em;
+		}
+
+		.nav-logo {
+			display: block;
+			height: 1.5em;
+
+			@include media(">mobile") {
+				height: 2em;
+			}
+			img {
+				height: 100%;
+				// background-color: yellow;
+			}
+		}
+
+		.nav-button {
+			border: 1px solid $pink;
+			border-radius: 2em;
+			padding: 0.5em 2em;
+			font-size: 0.5em;
+			color: $pink;
+
+			@include media(">mobile") {
+				padding: 0.5em 2em;
+				font-size: 1em;
+			}
+		}
+	}
+}
+
+main {
+	min-height: 100vh;
+	@include flex-column-center;
+	padding: 7em 0;
+	// background-color: yellow;
+
+	.landing-section {
+		@include flex-column-center;
+		// background-color: aqua;
+		padding: 0 2em 3em;
+		width: 100%;
+		box-sizing: border-box;
+
+		&-title {
+			text-align: center;
+			line-height: 1.4;
+			margin-bottom: 1em;
+		}
+
+		&-overview {
+			text-align: center;
+			margin-bottom: 2em;
+			font-size: 1.2em;
+		}
+
+		&-button {
+			display: block;
+			padding: 1em 2em;
+			background-color: $pink;
+			border-radius: 2em;
+			margin-bottom: 4em;
+		}
+
+		&-image {
+			width: 90%;
+		}
+	}
+
+	.count-section.row{
+		display: flex;
+		flex-direction: column;
+
+		.col {
+			
+			.number-icon{
+				width: 15%;
+			}
+			.number {
+				font-size: 5em;
+				line-height: 1.2;
+			}
+			.number-description {
+				display: inline-block;
+				width: 100%;
+				text-align: center;
+				margin: 0 auto;
+				color: gray;
+				margin-bottom: 4em;
+			}
+		}
+	}
 }

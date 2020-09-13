@@ -4,18 +4,25 @@ $query-desktop: 1440px;
 
 // colors.
 //  Primary
-$Pink: hsl(322, 100%, 66%);
-
+$pink: hsl(322, 100%, 66%);
+$black: rgb(37, 37, 37);
 //  Neutral
-$Very-Dark-Cyan: hsl(192, 100%, 9%);
-$Very-Pale-Blue: hsl(207, 100%, 98%);
-
+$very-Dark-Cyan: hsl(192, 100%, 9%);
+$very-Pale-Blue: hsl(207, 100%, 98%);
 
 // Typography.
 // Headings
-$headeing-family: 'Poppins'; //(https://fonts.google.com/specimen/Poppins);
+$headeing-family: "Poppins"; //(https://fonts.google.com/specimen/Poppins);
 $headeing-weights: 700;
 
 // Body
-$body-family: 'Open Sans'; //(https://fonts.google.com/specimen/Open+Sans);
+$body-family: "Open Sans"; //(https://fonts.google.com/specimen/Open+Sans);
 $body-weights: 400, 600, 700;
+
+// * mixin
+@mixin flex-column-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
