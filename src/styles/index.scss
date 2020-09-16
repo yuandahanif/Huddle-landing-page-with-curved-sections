@@ -74,17 +74,41 @@ header {
 		// background-color: salmon;
 		padding: 2em 1.5em;
 
-		@include media(">mobile") {
+		@include media(">tablet") {
 			padding: 3.5em 4em;
+		}
+
+		@include media(">mobile", "<tablet") {
+			padding: 3.5em 3em;
+		}
+
+		// * mixin < 576 for nav
+		@mixin query-mobile-576 {
+			@include media(">mobile", "<576px") {
+				@content;
+			}
+		}
+
+		@include query-mobile-576 {
+			padding: 3.5em 2em;
 		}
 
 		.nav-logo {
 			display: block;
 			height: 1em;
 
-			@include media(">mobile") {
+			@include media(">mobile", "<tablet") {
 				height: 2em;
 			}
+
+			@include query-mobile-576 {
+				height: 1.5em;
+			}
+
+			@include media(">tablet") {
+				height: 2em;
+			}
+
 			img {
 				height: 100%;
 				// background-color: yellow;
@@ -99,7 +123,17 @@ header {
 			color: $pink;
 			transition: 0.2s ease-in-out;
 
-			@include media(">mobile") {
+			@include media(">mobile", "<tablet") {
+				padding: 0.5em 2em;
+				font-size: 1em;
+			}
+
+			@include query-mobile-576 {
+				padding: 0.5em 2em;
+				font-size: 0.8em;
+			}
+
+			@include media(">tablet") {
 				padding: 0.5em 2em;
 				font-size: 1em;
 			}
@@ -116,7 +150,6 @@ main {
 	min-height: 100vh;
 	@include flex-column-center;
 	padding: 7em 0;
-	// background-color: yellow;
 
 	.landing-section {
 		@include flex-column-center;
@@ -125,12 +158,36 @@ main {
 		box-sizing: border-box;
 		padding: 0 2em 3em;
 
+		@mixin query-mobile-640 {
+			@include media(">mobile", "<=640px") {
+				@content;
+			}
+		}
+
+		@include query-mobile-640 {
+			margin-bottom: 3em;
+		}
+
 		&-title {
 			text-align: center;
 			line-height: 1.4;
 			margin-bottom: 1em;
 
-			@include media(">mobile") {
+			@include media(">mobile", "<tablet") {
+				font-size: 2em;
+				line-height: 1.4;
+				margin: 0 4em;
+				margin-bottom: 1em;
+			}
+
+			@include query-mobile-640 {
+				font-size: 2em;
+				line-height: 1.4;
+				margin: 0;
+				margin-bottom: 0.5em;
+			}
+
+			@include media(">tablet") {
 				font-size: 3em;
 				line-height: 1;
 				margin-bottom: 0.5em;
@@ -143,7 +200,19 @@ main {
 			font-weight: 500;
 			font-size: 0.9em;
 
-			@include media(">mobile") {
+			@include media(">mobile", "<tablet") {
+				width: 65%;
+				font-size: 1em;
+				margin-bottom: 2em;
+			}
+
+			@include query-mobile-640 {
+				width: 75%;
+				font-size: 1em;
+				margin-bottom: 2em;
+			}
+
+			@include media(">tablet") {
 				width: 55%;
 				font-size: 1.5em;
 			}
@@ -157,7 +226,11 @@ main {
 			border-radius: 2em;
 			margin-bottom: 6em;
 
-			@include media(">mobile") {
+			@include media(">mobile", "<tablet") {
+				margin-bottom: 10em;
+			}
+
+			@include media(">tablet") {
 				padding: 1em 4em;
 				font-size: 1.3em;
 			}
@@ -166,7 +239,11 @@ main {
 		&-image {
 			width: 95%;
 
-			@include media(">mobile") {
+			@include media(">mobile", "<tablet") {
+				width: 85%;
+			}
+
+			@include media(">tablet") {
 				width: 75%;
 			}
 		}
@@ -177,7 +254,29 @@ main {
 		flex-direction: column;
 		margin-bottom: 3em;
 
-		@include media(">mobile") {
+		@include media(">mobile", "<tablet") {
+			margin: 5em 0 10em;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 65%;
+		}
+
+		// * 510px break point
+		@mixin query-mobile-510 {
+			@include media(">mobile", "<=510px") {
+				@content;
+			}
+		}
+
+		@include query-mobile-510 {
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			width: 65%;
+			margin-bottom: 10em;
+		}
+
+		@include media(">tablet") {
 			margin: 5em 0 10em;
 			flex-direction: row;
 			justify-content: space-between;
@@ -187,6 +286,14 @@ main {
 		.col {
 			.number-icon {
 				width: 15%;
+
+				@include media(">mobile", "<tablet") {
+					width: 25%;
+				}
+
+				@include query-mobile-510 {
+					width: 20%;
+				}
 			}
 
 			.number {
@@ -194,7 +301,15 @@ main {
 				font-weight: 600;
 				line-height: 1.2;
 
-				@include media(">mobile") {
+				@include media(">mobile", "<tablet") {
+					font-size: 3em;
+				}
+
+				@include query-mobile-510 {
+					font-size: 4em;
+				}
+
+				@include media(">tablet") {
 					font-size: 6em;
 				}
 			}
@@ -207,7 +322,15 @@ main {
 				color: gray;
 				margin-bottom: 4em;
 
-				@include media(">mobile") {
+				@include media(">mobile", "<tablet") {
+					font-size: 1em;
+				}
+
+				@include query-mobile-510 {
+					font-size: 1em;
+				}
+
+				@include media(">tablet") {
 					font-size: 1.5em;
 				}
 			}
@@ -216,6 +339,8 @@ main {
 
 	.info-section {
 		.info.row {
+			$mobile-query: 640px;
+
 			flex-direction: column-reverse;
 			background-color: #f6fbff;
 			// background-color: red;
@@ -223,7 +348,13 @@ main {
 			padding: 3em 0 2em;
 			position: relative;
 
-			@include media(">mobile") {
+			@include media(">#{$mobile-query}", "<tablet") {
+				flex-direction: row;
+				box-sizing: border-box;
+				padding: 3em;
+			}
+
+			@include media(">tablet") {
 				flex-direction: row;
 				box-sizing: border-box;
 				padding: 3em 7em;
@@ -243,7 +374,14 @@ main {
 				background-repeat: no-repeat;
 				background-image: url(../assets/images/bg-section-top-mobile-1.svg);
 
-				@include media(">mobile") {
+				@include media(">mobile", "<tablet") {
+					$height: 10em;
+					top: 0-$height;
+					height: $height;
+					background-image: url(../assets/images/bg-section-top-desktop-1.svg);
+				}
+
+				@include media(">tablet") {
 					$height: 10em;
 					top: 0-$height;
 					height: $height;
@@ -262,7 +400,14 @@ main {
 				background-repeat: no-repeat;
 				background-image: url(../assets/images/bg-section-bottom-mobile-1.svg);
 
-				@include media(">mobile") {
+				@include media(">mobile", "<tablet") {
+					$height: 20em;
+					bottom: 0-$height;
+					height: $height;
+					background-image: url(../assets/images/bg-section-bottom-desktop-1.svg);
+				}
+
+				@include media(">tablet") {
 					$height: 20em;
 					bottom: 0-$height;
 					height: $height;
@@ -273,8 +418,18 @@ main {
 			// ! exception for second child
 			&:nth-child(2) {
 				margin: 8em 0;
+				background-color: white;
 
-				@include media(">mobile") {
+				@include media(">#{$mobile-query}", "<tablet") {
+					flex-direction: row-reverse;
+					margin: 12em 0;
+
+					.info-img-container {
+						align-items: flex-start;
+					}
+				}
+
+				@include media(">tablet") {
 					margin: 16em 0;
 					flex-direction: row-reverse;
 
@@ -282,8 +437,6 @@ main {
 						align-items: flex-start;
 					}
 				}
-
-				background-color: white;
 
 				&::before {
 					background-image: none;
@@ -301,7 +454,14 @@ main {
 					height: $height;
 					background-image: url(../assets/images/bg-section-top-mobile-2.svg);
 
-					@include media(">mobile") {
+					@include media(">mobile", "<tablet") {
+						$height: 9em;
+						top: 0-$height;
+						height: $height;
+						background-image: url(../assets/images/bg-section-top-desktop-2.svg);
+					}
+
+					@include media(">tablet") {
 						$height: 9em;
 						top: 0-$height;
 						height: $height;
@@ -314,7 +474,14 @@ main {
 					height: $height;
 					background-image: url(../assets/images/bg-section-bottom-mobile-2.svg);
 
-					@include media(">mobile") {
+					@include media(">mobile", "<tablet") {
+						$height: 10em;
+						bottom: 0-$height;
+						height: $height;
+						background-image: url(../assets/images/bg-section-bottom-desktop-2.svg);
+					}
+
+					@include media(">tablet") {
 						$height: 10em;
 						bottom: 0-$height;
 						height: $height;
@@ -324,7 +491,14 @@ main {
 			}
 
 			.col {
-				@include media(">mobile") {
+				@include media(">#{$mobile-query}", "<tablet") {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: center;
+				}
+
+				@include media(">tablet") {
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
@@ -338,7 +512,14 @@ main {
 				font-weight: 400;
 				font-size: 0.9em;
 
-				@include media(">mobile") {
+				@include media(">#{$mobile-query}", "<tablet") {
+					padding: 0;
+					width: 50%;
+					text-align: left;
+					box-sizing: border-box;
+				}
+
+				@include media(">tablet") {
 					padding: 0;
 					width: 50%;
 					text-align: left;
@@ -350,8 +531,17 @@ main {
 					font-size: 1.3em;
 
 					@include media(">mobile") {
-						// padding: 0.5em 2em;
+						font-size: 1.5em;
+					}
+
+					@include media(">#{$mobile-query}") {
 						display: block;
+						margin-bottom: 0.2em;
+						font-size: 2em;
+						line-height: 1;
+					}
+
+					@include media(">tablet") {
 						margin-bottom: 0.5em;
 						font-size: 3em;
 					}
@@ -360,8 +550,19 @@ main {
 				p {
 					@include media(">mobile") {
 						display: inline-block;
+						font-size: 1.1em;
+						padding: 0 3em;
+					}
+
+					@include media(">#{$mobile-query}") {
 						text-align: left;
+						font-size: 1.1em;
+						padding: 0;
+					}
+
+					@include media(">tablet") {
 						font-size: 1.2em;
+						padding: 0;
 					}
 				}
 			}
@@ -371,13 +572,26 @@ main {
 				justify-content: center;
 
 				@include media(">mobile") {
+					margin-bottom: 5em;
+				}
+
+				@include media(">#{$mobile-query}") {
+					align-items: flex-end;
+					width: 50%;
+				}
+
+				@include media(">tablet") {
 					align-items: flex-end;
 					width: 50%;
 				}
 				.info-images {
 					width: 70%;
 
-					@include media(">mobile") {
+					@include media(">#{$mobile-query}") {
+						width: 80%;
+					}
+
+					@include media(">tablet") {
 						width: 90%;
 					}
 				}
@@ -390,7 +604,7 @@ main {
 		margin-bottom: 4em;
 		padding: 3em;
 
-		@include media(">mobile") {
+		@include media(">tablet") {
 			margin-bottom: 0;
 			padding: 8em 0;
 		}
@@ -398,7 +612,7 @@ main {
 		h2 {
 			margin-bottom: 1em;
 
-			@include media(">mobile") {
+			@include media(">tablet") {
 				font-size: 2.5em;
 				line-height: 1;
 				margin-bottom: 1em;
@@ -412,7 +626,7 @@ main {
 			font-size: 0.8em;
 			border-radius: 2em;
 
-			@include media(">mobile") {
+			@include media(">tablet") {
 				padding: 1em 4em;
 				font-size: 1.3em;
 			}
@@ -427,7 +641,7 @@ footer.row {
 	color: white;
 	padding: 2em;
 
-	@include media(">mobile") {
+	@include media(">tablet") {
 		flex-direction: row;
 		padding: 5em 7em;
 		justify-content: space-between;
@@ -440,14 +654,13 @@ footer.row {
 			color: #f6fbff;
 		}
 
-		@include media(">mobile") {
+		@include media(">tablet") {
 			width: 30%;
 		}
 
 		// * left / bottom
 		&.left {
-
-			@include media(">mobile") {
+			@include media(">tablet") {
 				margin-bottom: 0em;
 			}
 
@@ -456,7 +669,7 @@ footer.row {
 				display: block;
 				margin-bottom: 1em;
 
-				@include media(">mobile") {
+				@include media(">tablet") {
 					height: 2.5em;
 					margin-bottom: 2em;
 				}
@@ -509,8 +722,8 @@ footer.row {
 
 						i {
 							height: 2em;
-							
-							@include media(">mobile") {
+
+							@include media(">tablet") {
 								height: 0em;
 								font-size: 2em;
 								// margin-bottom: 2em;
@@ -525,7 +738,7 @@ footer.row {
 		&.right {
 			margin-bottom: 5em;
 
-			@include media(">mobile") {
+			@include media(">desktop") {
 				width: 40%;
 				margin-bottom: 0em;
 			}
@@ -534,7 +747,7 @@ footer.row {
 				margin-bottom: 1em;
 				color: #f6fbff;
 
-				@include media(">mobile") {
+				@include media(">desktop") {
 					font-size: 1.6em;
 				}
 			}
@@ -544,7 +757,7 @@ footer.row {
 				font-weight: 500;
 				font-size: 0.9em;
 
-				@include media(">mobile") {
+				@include media(">desktop") {
 					font-size: 1em;
 					font-weight: 550;
 				}
@@ -552,8 +765,7 @@ footer.row {
 
 			form {
 				.input-group {
-
-					@include media(">mobile") {
+					@include media(">desktop") {
 						display: flex;
 					}
 
@@ -562,8 +774,8 @@ footer.row {
 						padding: 1em;
 						width: 100%;
 						margin-bottom: 1em;
-						
-						@include media(">mobile") {
+
+						@include media(">desktop") {
 							margin-bottom: 0;
 						}
 					}
@@ -580,7 +792,7 @@ footer.row {
 						padding: 1em 3em;
 						background-color: $pink;
 
-						@include media(">mobile") {
+						@include media(">desktop") {
 							margin-left: 2em;
 						}
 					}
@@ -600,7 +812,7 @@ footer.row {
 		background-repeat: no-repeat;
 		background-image: url(../assets/images/bg-footer-top-mobile.svg);
 
-		@include media(">mobile") {
+		@include media(">desktop") {
 			$height: 9.5em;
 			top: 0-$height;
 			height: $height;
