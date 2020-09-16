@@ -55,7 +55,17 @@ span {
 }
 
 body {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
   font-family: "Open Sans";
+}
+
+@media (min-width: 1441px) {
+  body {
+    -webkit-box-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 0.233);
+            box-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 0.233);
+  }
 }
 
 header nav {
@@ -349,6 +359,14 @@ main .count-section.row {
   }
 }
 
+@media (min-width: 1441px) {
+  main .count-section.row {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+}
+
 main .count-section.row .col .number-icon {
   width: 15%;
 }
@@ -478,6 +496,12 @@ main .info-section .info.row::before {
   }
 }
 
+@media (min-width: 1441px) {
+  main .info-section .info.row::before {
+    background-size: cover;
+  }
+}
+
 main .info-section .info.row::after {
   bottom: -5em;
   height: 5em;
@@ -502,6 +526,12 @@ main .info-section .info.row::after {
     bottom: -20em;
     height: 20em;
     background-image: url(../assets/images/bg-section-bottom-desktop-1.svg);
+  }
+}
+
+@media (min-width: 1441px) {
+  main .info-section .info.row::after {
+    background-size: cover;
   }
 }
 
@@ -590,6 +620,11 @@ main .info-section .info.row:nth-child(3)::after {
     height: 10em;
     background-image: url(../assets/images/bg-section-bottom-desktop-2.svg);
   }
+}
+
+main .info-section .info.row .col {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @media (min-width: 641px) and (max-width: 767px) {
@@ -764,6 +799,7 @@ main .get-started-section {
   main .get-started-section {
     margin-bottom: 0;
     padding: 8em 0;
+    margin-bottom: 10em;
   }
 }
 
@@ -775,7 +811,7 @@ main .get-started-section h2 {
   main .get-started-section h2 {
     font-size: 2em;
     line-height: 1;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
 }
 
@@ -851,7 +887,7 @@ footer.row .col span {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1441px) {
   footer.row .col {
     width: 30%;
   }
@@ -1033,7 +1069,7 @@ footer.row::before {
   }
 }
 
-@media (min-width: 1441px) {
+@media (min-width: 769px) {
   footer.row::before {
     top: -9.5em;
     height: 9.5em;

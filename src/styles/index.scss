@@ -63,11 +63,24 @@ span {
 	// }
 }
 
+@mixin max-width {
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
+	@content;
+}
+
 body {
+	@include max-width;
 	font-family: "Open Sans";
+
+	@include media(">desktop") {
+		box-shadow: .2em .2em .8em rgba(0, 0, 0, 0.233);
+	}
 }
 
 header {
+
 	nav {
 		display: flex;
 		justify-content: space-between;
@@ -152,6 +165,7 @@ main {
 	padding: 7em 0;
 
 	.landing-section {
+		
 		@include flex-column-center;
 		// background-color: aqua;
 		width: 100%;
@@ -250,6 +264,7 @@ main {
 	}
 
 	.count-section.row {
+		
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 3em;
@@ -281,6 +296,10 @@ main {
 			flex-direction: row;
 			justify-content: space-between;
 			width: 65%;
+		}
+
+		@include media(">desktop") {
+			justify-content: space-evenly;
 		}
 
 		.col {
@@ -387,6 +406,10 @@ main {
 					height: $height;
 					background-image: url(../assets/images/bg-section-top-desktop-1.svg);
 				}
+
+				@include media(">desktop") {
+					background-size: cover;
+				}
 			}
 
 			&::after {
@@ -412,6 +435,10 @@ main {
 					bottom: 0-$height;
 					height: $height;
 					background-image: url(../assets/images/bg-section-bottom-desktop-1.svg);
+				}
+
+				@include media(">desktop") {
+					background-size: cover;
 				}
 			}
 
@@ -491,6 +518,8 @@ main {
 			}
 
 			.col {
+				box-sizing: border-box;
+
 				@include media(">#{$mobile-query}", "<tablet") {
 					display: flex;
 					flex-direction: column;
@@ -607,6 +636,7 @@ main {
 		@include media(">tablet") {
 			margin-bottom: 0;
 			padding: 8em 0;
+			margin-bottom: 10em;
 		}
 
 		h2 {
@@ -615,7 +645,7 @@ main {
 			@include media(">mobile") {
 				font-size: 2em;
 				line-height: 1;
-				margin-bottom: .5em;
+				margin-bottom: 0.5em;
 			}
 
 			@include media(">tablet") {
@@ -641,12 +671,14 @@ main {
 }
 
 footer.row {
+	
+
 	flex-direction: column-reverse;
 	position: relative;
 	background-color: $very-Dark-Cyan;
 	color: white;
 	padding: 2em;
-	
+
 	@include media(">490px") {
 		flex-direction: row;
 		padding: 5em 3em;
@@ -660,6 +692,7 @@ footer.row {
 	}
 
 	.col {
+
 		p,
 		a,
 		span {
@@ -670,7 +703,7 @@ footer.row {
 			width: 45%;
 		}
 
-		@include media(">tablet") {
+		@include media(">desktop") {
 			width: 30%;
 		}
 
@@ -836,7 +869,7 @@ footer.row {
 			background-size: cover;
 		}
 
-		@include media(">desktop") {
+		@include media(">tablet") {
 			$height: 9.5em;
 			top: 0-$height;
 			height: $height;
